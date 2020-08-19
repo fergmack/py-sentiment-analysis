@@ -19,4 +19,14 @@ with open("positive_words.txt") as pos_f:
 def strip_punctuation(s):
     for i in s:
         if i in punctuation_chars:
-            s = s.r
+            s = s.replace(i, "")
+    return s
+                        
+def get_pos(sentence):
+    count_pos = 0
+    sentence = strip_punctuation(sentence.lower())
+    words = list(sentence.split(" "))
+    for w in words:
+        if w in positive_words:
+            count_pos +=1
+    return count_pos
